@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import ILocation from '../interfaces/ILocation';
 import { Map, useMap } from '@vis.gl/react-google-maps';
 import Markers from './Markers';
-import '../styles/map-box.css';
 
 function MapBox({
   selectedLocation,
@@ -14,13 +13,13 @@ function MapBox({
   const map = useMap();
 
   useEffect(() => {
-    if (!map) return;
-
-    if (map && selectedLocation) {
+    if (map) {
       map.setCenter({
         lat: selectedLocation.coordinates.lat,
         lng: selectedLocation.coordinates.lng,
       });
+    } else {
+      return;
     }
   }, [map, selectedLocation]);
 
@@ -36,19 +35,17 @@ function MapBox({
   };
 
   return (
-    // <div className='map-box'>
     <Map
       defaultZoom={10}
       defaultCenter={mapCenter}
       mapId={import.meta.env.VITE_MAP_ID}
-      className='map-box'
+      style={{ height: '100%' }}
     >
       <Markers
         selectedLocation={selectedLocation}
         onMarkerClick={handleMarkerClick}
       />
     </Map>
-    // </div>
   );
 }
 

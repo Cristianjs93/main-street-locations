@@ -23,9 +23,9 @@ export default function Markers({
             onClick={() => onMarkerClick(location)}
           >
             <Pin
-              background={isSelected ? '#ffffff' : '#ea4335'}
-              glyphColor={isSelected ? '#074174' : '#b31412'}
-              borderColor={isSelected ? '#074174' : '#b31412'}
+              background={isSelected ? '#074174' : '#ea4335'}
+              glyphColor={isSelected ? '#ffffff' : '#b31412'}
+              borderColor={isSelected ? '#ffffff' : '#b31412'}
             />
           </AdvancedMarker>
         );

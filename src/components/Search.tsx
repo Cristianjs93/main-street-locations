@@ -12,8 +12,9 @@ export default function Search({
     const { value } = e.target;
     onSearch(value);
   }
+
   return (
-    <>
+    <div className='search-container'>
       <input
         type='text'
         id='search'
@@ -29,9 +30,9 @@ export default function Search({
           className='search-clear'
           onClick={() => onSearch('')}
         >
-          Clear
+          x
         </button>
       )}
-    </>
+    </div>
   );
 }

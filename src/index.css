@@ -18,3 +18,27 @@ body {
   font-size: 15px;
   scroll-behavior: smooth;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #bec2c8;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #074174;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #042d51;
+}
+
+::-webkit-scrollbar-corner {
+  border-radius: 2px;
+  background-color: #d2d2d2;
+}

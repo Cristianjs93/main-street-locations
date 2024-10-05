@@ -14,7 +14,9 @@ export default function Locations({
   return (
     <>
       {locations
-        .filter((location) => location.name.toLowerCase().includes(search))
+        .filter((location) =>
+          location.name.toLowerCase().includes(search.toLocaleLowerCase())
+        )
         .map((location) => (
           <Card
             key={`card-${location.id}`}

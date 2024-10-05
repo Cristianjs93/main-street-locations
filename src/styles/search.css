@@ -1,6 +1,11 @@
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
 .search-input {
-  width: 50%;
   appearance: none;
+  width: 100%;
   font-weight: 600;
   padding: 12px;
   padding-left: 40px;
@@ -21,21 +26,35 @@
 }
 
 .search-clear {
-  height: 45px;
-  width: 120px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
   appearance: none;
-  padding: 8px 16px;
-  color: #ffffff;
+  height: 25px;
+  line-height: 0px;
+  padding: 8px;
+  color: #074174;
   font-weight: 700;
-  background-color: #aa1a2d;
-  border: 2px solid #aa1a2d;
+  border: none;
   border-radius: 35px;
   outline: none;
+  background-color: transparent;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
 .search-clear:hover {
   color: #aa1a2d;
-  background-color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .search-container {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search-container {
+    width: 45%;
+  }
 }
