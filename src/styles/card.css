@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #a4b2cd;
+  border-radius: 15px;
+  cursor: pointer;
+  scroll-margin: 35px;
+}
+
+.card.card-selected {
+  border: 4px solid #074174;
+  border-radius: 17px;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+.rating {
+  font-weight: 700;
+}

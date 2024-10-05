@@ -1,0 +1,41 @@
+.search-input {
+  width: 50%;
+  appearance: none;
+  font-weight: 600;
+  padding: 12px;
+  padding-left: 40px;
+  border: 3px solid #074174;
+  border-radius: 30px;
+  background-image: url('https://mainstreetauto.com/wp-content/themes/flynt/dist/assets/pin-b683cc45.svg');
+  background-position: 13px 11px;
+  background-repeat: no-repeat;
+  background-size: 19px;
+  background-color: #ffffff;
+  caret-color: #0a1726;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #70c2dd;
+  outline: none;
+}
+
+.search-clear {
+  height: 45px;
+  width: 120px;
+  appearance: none;
+  padding: 8px 16px;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #aa1a2d;
+  border: 2px solid #aa1a2d;
+  border-radius: 35px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.search-clear:hover {
+  color: #aa1a2d;
+  background-color: #ffffff;
+}
