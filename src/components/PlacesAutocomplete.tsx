@@ -23,6 +23,7 @@ export default function PlacesAutocomplete({
     const places = inputRef?.current?.getPlaces();
     if (places) {
       const { formatted_address } = places[0];
+      setValue(String(formatted_address));
       const [geoCode] = await getGeocode({
         address: formatted_address,
       });
