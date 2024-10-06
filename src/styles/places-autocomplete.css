@@ -1,0 +1,51 @@
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-input {
+  appearance: none;
+  width: 100%;
+  padding: 12px;
+  padding-left: 40px;
+  border: 2px solid #074174;
+  border-radius: 30px;
+  background: #ffffff
+    url('https://mainstreetauto.com/wp-content/themes/flynt/dist/assets/pin-b683cc45.svg')
+    no-repeat 13px 11px / 19px;
+  caret-color: #0a1726;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.autocomplete-input::placeholder {
+  color: #818181;
+}
+
+.autocomplete-input:focus {
+  border-color: #70c2dd;
+  outline: none;
+}
+
+.autocomplete-clear {
+  position: absolute;
+  display: inline-block;
+  right: 20px;
+  top: 13px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 992px) {
+  .autocomplete-container {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .autocomplete-container {
+    width: 45%;
+  }
+}

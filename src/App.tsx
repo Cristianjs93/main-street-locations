@@ -1,37 +1,53 @@
 import { useState } from 'react';
-import ILocation from './interfaces/ILocation.ts';
-import Search from './components/Search.tsx';
+import ILocation, { MapCoordinates } from './interfaces/ILocation.ts';
+import PlacesWrapper from './components/PlacesWrapper.tsx';
+import PlacesAutocomplete from './components/PlacesAutocomplete.tsx';
+import EmptyView from './components/EmptyView.tsx';
 import Locations from './components/Locations.tsx';
-import MapBox from './components/MapBox.tsx';
-import { locations } from './data/constants/locations.ts';
+import Map from './components/Map.tsx';
 import './styles/app.css';
 
 export default function App() {
-  const [selectedLocation, setSelectedLocation] = useState<ILocation>(
-    locations[0]
+  const [locations, setLocations] = useState<ILocation[]>([]);
+  const [selectedCity, setSelectedCity] = useState<MapCoordinates | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<ILocation | null>(
+    null
   );
-  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
 
   return (
-    <main className='main-container'>
-      <header className='header'>
-        <Search search={search} onSearch={setSearch} />
-      </header>
-      <div className='content'>
-        <section className='locations-container'>
-          <Locations
-            search={search}
-            selectedLocation={selectedLocation}
-            onSelectedLocation={setSelectedLocation}
+    <PlacesWrapper>
+      <main className='main-container'>
+        <header className='header'>
+          <PlacesAutocomplete
+            onSelectedCity={setSelectedCity}
+            onLoading={setLoading}
           />
-        </section>
-        <section className='map-container'>
-          <MapBox
-            selectedLocation={selectedLocation}
-            onSelectedLocation={setSelectedLocation}
-          />
-        </section>
-      </div>
-    </main>
+        </header>
+        <div className='content'>
+          {!selectedCity ? (
+            <EmptyView isLoading={loading} />
+          ) : (
+            <>
+              <section className='locations-container'>
+                <Locations
+                  locations={locations}
+                  selectedLocation={selectedLocation}
+                  onSelectedLocation={setSelectedLocation}
+                />
+              </section>
+              <section className='map-container'>
+                <Map
+                  onLocations={setLocations}
+                  selectedCity={selectedCity}
+                  selectedLocation={selectedLocation}
+                  onSelectedLocation={setSelectedLocation}
+                />
+              </section>
+            </>
+          )}
+        </div>
+      </main>
+    </PlacesWrapper>
   );
 }

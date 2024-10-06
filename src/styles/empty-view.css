@@ -1,0 +1,17 @@
+.empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.empty-skeleton {
+  background-image: url('https://mainstreetauto.com/wp-content/themes/flynt/dist/assets/Frame%20427322704-333df9ee.jpg');
+  background-size: 100%;
+}
+
+.empty-title {
+  font-size: 22px;
+  text-align: center;
+}

@@ -7,8 +7,10 @@ export default interface ILocation {
   zipCode: string;
   rating?: number;
   image: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
+  coordinates: MapCoordinates;
 }
+
+export type MapCoordinates = {
+  lat: number;
+  lng: number;
+};

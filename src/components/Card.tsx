@@ -7,10 +7,11 @@ export default function Card({
   onSelectedLocation,
 }: {
   location: ILocation;
-  selectedLocation: ILocation;
+  selectedLocation: ILocation | null;
   onSelectedLocation: Function;
 }) {
-  const isSelected = selectedLocation.id === location.id;
+  const isSelected = selectedLocation?.id === location.id;
+  const separationIndex = location.address.indexOf(',');
 
   return (
     <>
@@ -22,13 +23,11 @@ export default function Card({
       >
         <h2 className='card-title'>{location.name}</h2>
         <p>
-          {location.address.slice(0, location.address.indexOf(',')).trim()}
+          {location.address.slice(0, separationIndex)}
           <br />
-          {location.address.slice(location.address.indexOf(',') + 1).trim()}
+          {location.address.slice(separationIndex + 1)}
         </p>
-        <span className='rating'>
-          ⭐{location.rating ? location.rating : '0'}
-        </span>
+        <span className='rating'>⭐{location.rating ?? '0'}</span>
       </article>
     </>
   );
