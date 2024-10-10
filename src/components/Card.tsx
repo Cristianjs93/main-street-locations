@@ -1,15 +1,16 @@
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import {
+  getSelectedLocation,
+  setSelectedLocation,
+} from '../redux/slices/locations';
 import ILocation from '../interfaces/ILocation';
 import '../styles/card.css';
 
-export default function Card({
-  location,
-  selectedLocation,
-  onSelectedLocation,
-}: {
-  location: ILocation;
-  selectedLocation: ILocation | null;
-  onSelectedLocation: Function;
-}) {
+export default function Card({ location }: { location: ILocation }) {
+  const dispatch = useAppDispatch();
+
+  const selectedLocation = useAppSelector(getSelectedLocation);
+
   const isSelected = selectedLocation?.id === location.id;
   const separationIndex = location.address.indexOf(',');
 
@@ -19,7 +20,7 @@ export default function Card({
         key={location.id}
         id={location.id}
         className={isSelected ? 'card card-selected' : 'card'}
-        onClick={() => onSelectedLocation(location)}
+        onClick={() => dispatch(setSelectedLocation(location))}
       >
         <h2 className='card-title'>{location.name}</h2>
         <p>

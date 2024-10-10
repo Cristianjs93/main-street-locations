@@ -1,4 +1,6 @@
 import { ChangeEvent, useRef } from 'react';
+import { useAppDispatch } from '../redux/hooks';
+import { setSelectedCity } from '../redux/slices/locations';
 import { StandaloneSearchBox } from '@react-google-maps/api';
 import ClearButton from './ClearButton';
 import usePlacesAutocomplete, {
@@ -8,12 +10,12 @@ import usePlacesAutocomplete, {
 import '../styles/places-autocomplete.css';
 
 export default function PlacesAutocomplete({
-  onSelectedCity,
   onLoading,
 }: {
-  onSelectedCity: Function;
   onLoading: Function;
 }) {
+  const dispatch = useAppDispatch();
+
   const inputRef = useRef<google.maps.places.SearchBox | null>(null);
 
   const { ready, value, setValue } = usePlacesAutocomplete();
@@ -28,7 +30,7 @@ export default function PlacesAutocomplete({
         address: formatted_address,
       });
       const coordinates = getLatLng(geoCode);
-      onSelectedCity(coordinates);
+      dispatch(setSelectedCity(coordinates));
     }
     onLoading(false);
   };

@@ -1,20 +1,20 @@
 import { useCallback, useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { getFilteredLocations } from '../utils/helpers';
 import ILocation, { MapCoordinates } from '../interfaces/ILocation';
 import { GoogleMap } from '@react-google-maps/api';
 import Markers from './Markers';
-import { getFilteredLocations } from '../utils/helpers';
+import {
+  getSelectedCity,
+  setLocations,
+  setSelectedLocation,
+} from '../redux/slices/locations';
 
-export default function Map({
-  onLocations,
-  selectedCity,
-  selectedLocation,
-  onSelectedLocation,
-}: {
-  onLocations: Function;
-  selectedCity: MapCoordinates | null;
-  selectedLocation: ILocation | null;
-  onSelectedLocation: Function;
-}) {
+export default function Map() {
+  const dispatch = useAppDispatch();
+
+  const selectedCity = useAppSelector(getSelectedCity);
+
   const mapRef = useRef<google.maps.Map | null>(null);
 
   const handleLoad = useCallback((map: google.maps.Map) => {
@@ -27,12 +27,12 @@ export default function Map({
       const filteredLocations = getFilteredLocations(
         bounds as google.maps.LatLngBounds
       );
-      onLocations(filteredLocations);
+      dispatch(setLocations(filteredLocations));
     }
   }, []);
 
   const handleMarkerClick = (location: ILocation) => {
-    onSelectedLocation(location);
+    dispatch(setSelectedLocation(location));
     const element = document.getElementById(location.id);
     element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -47,10 +47,7 @@ export default function Map({
         clickableIcons={false}
         onBoundsChanged={handleBoundsChanged}
       >
-        <Markers
-          selectedLocation={selectedLocation}
-          onMarkerClick={handleMarkerClick}
-        />
+        <Markers onMarkerClick={handleMarkerClick} />
       </GoogleMap>
     </>
   );

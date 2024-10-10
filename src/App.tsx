@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import ILocation, { MapCoordinates } from './interfaces/ILocation.ts';
+import { useAppSelector } from './redux/hooks.ts';
+import { getSelectedCity } from './redux/slices/locations.ts';
 import PlacesWrapper from './components/PlacesWrapper.tsx';
 import PlacesAutocomplete from './components/PlacesAutocomplete.tsx';
 import EmptyView from './components/EmptyView.tsx';
@@ -8,21 +9,15 @@ import Map from './components/Map.tsx';
 import './styles/app.css';
 
 export default function App() {
-  const [locations, setLocations] = useState<ILocation[]>([]);
-  const [selectedCity, setSelectedCity] = useState<MapCoordinates | null>(null);
-  const [selectedLocation, setSelectedLocation] = useState<ILocation | null>(
-    null
-  );
   const [loading, setLoading] = useState(false);
+
+  const selectedCity = useAppSelector(getSelectedCity);
 
   return (
     <PlacesWrapper>
       <main className='main-container'>
         <header className='header'>
-          <PlacesAutocomplete
-            onSelectedCity={setSelectedCity}
-            onLoading={setLoading}
-          />
+          <PlacesAutocomplete onLoading={setLoading} />
         </header>
         <div className='content'>
           {!selectedCity ? (
@@ -30,19 +25,10 @@ export default function App() {
           ) : (
             <>
               <section className='locations-container'>
-                <Locations
-                  locations={locations}
-                  selectedLocation={selectedLocation}
-                  onSelectedLocation={setSelectedLocation}
-                />
+                <Locations />
               </section>
               <section className='map-container'>
-                <Map
-                  onLocations={setLocations}
-                  selectedCity={selectedCity}
-                  selectedLocation={selectedLocation}
-                  onSelectedLocation={setSelectedLocation}
-                />
+                <Map />
               </section>
             </>
           )}

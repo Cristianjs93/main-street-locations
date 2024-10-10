@@ -1,19 +1,21 @@
+import { useAppSelector } from '../redux/hooks';
+import { getSelectedLocation } from '../redux/slices/locations';
 import ILocation from '../interfaces/ILocation';
 import { MarkerClusterer, MarkerF } from '@react-google-maps/api';
-import { locations } from '../data/constants/locations';
+import { locationsData } from '../data/constants/locationsData';
 
 export default function Markers({
-  selectedLocation,
   onMarkerClick,
 }: {
-  selectedLocation: ILocation | null;
   onMarkerClick: (location: ILocation) => void;
 }) {
+  const selectedLocation = useAppSelector(getSelectedLocation);
+
   return (
     <MarkerClusterer>
       {() => (
         <>
-          {locations.map((location) => {
+          {locationsData.map((location) => {
             const isSelected = location.id === selectedLocation?.id;
 
             return (

@@ -1,4 +1,4 @@
-import { locations } from '../data/constants/locations';
+import { locations } from '../data/constants/locationsData';
 
 export function getFilteredLocations(bounds: google.maps.LatLngBounds) {
   const northEastLat = bounds?.getNorthEast().lat();

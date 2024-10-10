@@ -1,6 +1,6 @@
 import ILocation from '../../interfaces/ILocation';
 
-export const locations: ILocation[] = [
+export const locationsData: ILocation[] = [
   {
     id: 'ChIJiX6ryrRb9IgRQfydMAo206A',
     name: 'Alpha Automotive McDonough',
