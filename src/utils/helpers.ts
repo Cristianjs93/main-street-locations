@@ -1,4 +1,4 @@
-import { locations } from '../data/constants/locationsData';
+import { locationsData } from '../data/constants/locationsData';
 
 export function getFilteredLocations(bounds: google.maps.LatLngBounds) {
   const northEastLat = bounds?.getNorthEast().lat();
@@ -6,7 +6,7 @@ export function getFilteredLocations(bounds: google.maps.LatLngBounds) {
   const southWestLat = bounds?.getSouthWest().lat();
   const southWestLng = bounds?.getSouthWest().lng();
 
-  return locations.filter(({ coordinates }) => {
+  return locationsData.filter(({ coordinates }) => {
     const { lat, lng } = coordinates;
     return (
       lat >= Number(southWestLat) &&
