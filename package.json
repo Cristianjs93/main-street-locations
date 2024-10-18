@@ -1,7 +1,7 @@
 {
   "name": "main-street-locations",
-  "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
