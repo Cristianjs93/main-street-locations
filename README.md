@@ -59,6 +59,10 @@ Main Street Locations is a React project developed with Vite, designed to displa
 
 Create a .env file in the root of the project and add your Google Maps API key in a variable called `VITE_MAP_API_KEY`
 
+## Screenshots
+
+![main-street](image.png)
+
 ## Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request. Any contributions, whether improvements or bug fixes, are welcome!
