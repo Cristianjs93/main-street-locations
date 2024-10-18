@@ -61,7 +61,8 @@ Create a .env file in the root of the project and add your Google Maps API key i
 
 ## Screenshots
 
-![main-street](image.png)
+![main-street](./public/assets/locations-map.png)
+_*Map with the nearby Main Street Auto locations in the area*_
 
 ## Contributing
 
